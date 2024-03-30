@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            flex-direction: column;
+            align-items: center;
+        }
+        a{
+            margin: 0px 0px 0px 15px;
+        }
+        h2{
+            margin-top: 15%;
+        }
+        .name{
+            margin-top: 50px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pas1{
+            margin-top: 20px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pas1 label{
+            margin-right: 79px;
+        }
+        .pas2{
+            margin-top: 20px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <a href="{% url 'ghost_page' %}" class="btn btn-danger btn-sm">Вернуться на главную</a> <br>
+    <br>
+    <h2 class="text-center" >Регистрация</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class='name'>
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required><br>
+        </div> <!--name-->
+        <div class='pas1'>
+            <label for="password1">Пароль:</label>
+            <input type="password" id="password1" name="password1" required><br>
+        </div> <!--pas1-->
+        <div class='pas2'>
+            <label for="password2">Повторите пароль:</label>
+            <input type="password" id="password2" name="password2" required><br>
+        </div> <!--pas2-->
+            <button type="submit">Регистрация</button>
+        </form>
+</body>
+</html>

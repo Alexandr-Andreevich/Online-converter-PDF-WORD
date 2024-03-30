@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            flex-direction: column;
+            align-items: center;
+        }
+        a{
+            margin: 0px 0px 0px 15px;
+        }
+        h2{
+            margin-top: 15%;
+        }
+        .name{
+            margin-top: 50px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pas1{
+            margin-top: 20px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pas1 label{
+            margin-right: 79px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form button{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <a href="{% url 'ghost_page' %}" class="btn btn-danger btn-sm">Вернуться на главную</a> <br>
+    <br>
+    <h2 class="text-center" >Войти</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class='name'>
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required><br>
+        </div> <!--name-->
+        <div class='pas1'>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br>
+        </div> <!--pas1-->
+            <button type="submit">Войти</button>
+    </form>
+</body>
+</html>

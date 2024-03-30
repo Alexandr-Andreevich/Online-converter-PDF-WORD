@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Онлайн конвертор файлов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        a{
+            margin: 0px 0px 0px 15px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <a href="{% url 'login' %}" class="btn btn-danger btn-sm">Сменить пользователя</a> <br>
+    <br>
+    <a href="{% url 'ghost_page' %}" class="btn btn-primary btn-sm">Главная</a> <br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h2 class="text-center" >Добро пожаловать, {{ request.user.username }}!</h2> <br>
+    <br><br>
+    <h5 class="text-center" >Выберите тип конвертации:</h5> <br>
+    <br>
+
+    <form class="text-center" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <a href="{% url 'change_to_pdf' %}" class="btn btn-outline-dark">Из WORD в PDF</a>
+        <a href="{% url 'change_to_word' %}" class="btn btn-outline-dark">Из PDF в WORD</a>
+    </form>
+
+</body>
+</html>
